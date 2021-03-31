@@ -44,6 +44,7 @@ function Form() {
     const [progessValue, setProgessValue] = useState(1)
     const [formCurrentValue, setFormCurrentValue] = useState([])
     const [questionnaire, setQuestionnaire] = useState([])
+    const [editMode, setEditMode] = useState(false)
 
     useEffect(() => {
         getData()    
@@ -68,7 +69,11 @@ function Form() {
     }
 
     function nextButtonHandler() {
-        if (formIndex === 1 && formCurrentValue && formCurrentValue.length >= 3 ) {
+        if (editMode) {
+            setFormIndex(9)
+            setEditMode(false)
+            setProgessValue(8)
+        } else if (formIndex === 1 && formCurrentValue && formCurrentValue.length >= 3 ) {
             localStorage.setItem(formIndex, JSON.stringify(formCurrentValue));
             setQuestionnaire([...questionnaire, ...formCurrentValue])
             setFormIndex(formIndex + 2)
@@ -98,13 +103,30 @@ function Form() {
         setFormCurrentValue([])
     }
 
-    function questionnaireEditHandler(index){
+    function questionnaireEditHandler(index) {
+        setEditMode(true)
         setFormIndex(index)
         if (index < 3) {
             setProgessValue(1)
         } else {
-            setProgessValue(index - 1)
+            setProgessValue(index)
         }
+    }
+
+    function EditModeBadgeOnClickHandler(badgeValue, title){
+        let editIndex = null
+        questionnaire.forEach((item,index)=> {
+            if (item.title === title) {
+                console.log("true")
+                 editIndex = index
+            }
+        })
+
+        if (editIndex) {
+            questionnaire[editIndex] = {title,badgeValue};
+            setQuestionnaire(questionnaire)
+        }
+
     }
 
     function badgeOnClickHandler(badgeValue, title) {
@@ -132,7 +154,17 @@ function Form() {
                     />
                 </Col>
             </Row>
-                { formIndex < 3  ?
+                { 
+                editMode ? 
+                    <Row >
+                        <BadgeList
+                            title={formContent[formIndex].title}
+                            onClick={(badgeValue)=> EditModeBadgeOnClickHandler(  badgeValue , formContent[formIndex].title )}
+                            badgeList={formContent[formIndex].badgeList}
+                        />
+                    </Row>
+                :
+                formIndex < 3  ?
                     formContent.map((item,index) => {
                         if(index < 3) {
                             return(
@@ -161,7 +193,6 @@ function Form() {
                             BasicInfo={BasicInfo}
                             Questionnaire={questionnaire}
                             questionnaireEditHandler={(index)=>questionnaireEditHandler(index)}
-                            // basicInfoEditHandler={}
                         />
                     </Col>
                 }
