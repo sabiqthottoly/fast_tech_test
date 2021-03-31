@@ -14,7 +14,7 @@ let BasicInfo = [
     },
     {
         label : 'Date of birth',
-        value : localStorage.getItem("dateofbirth").split('00:00:00')[0],
+        value : localStorage.getItem("dateofbirth"),
     },
     {
         label : 'Gender',
