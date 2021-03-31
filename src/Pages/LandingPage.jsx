@@ -49,7 +49,7 @@ function LandingPage() {
 
     //function to validate the fields , store data in localStorage and go to next page
     function handleFormSubmit() {
-        if (!firstname || !lastname || !dateofbirth || !gender || !nationality || !residence || (!contactNumber && contactNumber.length < 10) || !email) {
+        if (!firstname || !lastname || !dateofbirth || !gender || !nationality || nationality === 'nationality' || !residence || residence === 'Country of residence' || !contactNumber && contactNumber.length < 10 || !email) {
             setShowDataEmptyAlert(true)
         } else {
             localStorage.setItem('firstname', firstname);
@@ -68,7 +68,7 @@ function LandingPage() {
         <Container fluid style={{ justifyContent: 'center', paddingRight: 10 }}>
             
             <Prompt
-                when={!firstname || !lastname || !dateofbirth || !gender || !nationality || !residence || !contactNumber || !email}
+                when={!firstname || !lastname || !dateofbirth || !gender || !nationality || nationality === 'nationality' || !residence || residence === 'Country of residence' || !contactNumber && contactNumber.length < 10 || !email}
                 message={location => `Are you sure you want to go to`}
             />
 
