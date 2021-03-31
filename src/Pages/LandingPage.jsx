@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import { useHistory, Prompt } from "react-router-dom";
 import { Button, Container, Row, Col, Input, Form, FormGroup, Label, Alert } from 'reactstrap'
-import './LandingPage.css'
+import './styles/LandingPage.css'
 import Calendar from 'react-calendar';
 import 'react-calendar/dist/Calendar.css';
 import CustomButton from '../Components/CustomButton'

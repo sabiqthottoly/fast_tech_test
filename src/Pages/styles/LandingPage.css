@@ -1,0 +1,135 @@
+.main{
+  min-height: 100vh;
+}
+
+.bg-image{
+  height: 100vh;
+  position: absolute;
+  width: 70%;
+  background-size: cover;
+}
+
+.cover-words{
+  font-size: 14px;
+  color: white;
+  position: absolute;
+  max-width: 450px;
+  bottom: 20%;
+  left: 10;
+  line-height: 20px;
+}
+
+@media(max-width: 1300px){
+  .cover-words{
+    max-width: 400px;
+  }
+}
+
+.left-side{
+  background-image: linear-gradient(#8E27EA,#8253DF);
+}
+
+.clip-me {
+  clip-path: polygon(68% 0, 78% 21%, 74% 58%, 88% 100%, 0 100%, 0% 60%, 0 0);
+}
+
+.man-image {
+  position: absolute;
+  top: 20%
+}
+
+@media (max-width: 940px) { 
+  .left-side{
+    display: none;
+  }
+ }
+
+.orange-image {
+  position: absolute;
+  top: 1%;
+  left: 1%;
+  right: 2%;
+  right: inherit;
+  height: 400px;
+}
+
+.text-input{
+    outline: none;
+    border: none;
+    background-color: #EFEFEF;
+}
+
+.text-box{
+    background-color: #EFEFEF;
+    display: flex;
+    margin-top: 7px;
+    height: 60px;
+    margin-bottom: 7px;
+    align-content: center;
+    align-items: center;
+    border-radius: 5px;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    justify-content: center;
+}
+
+.text-box:focus-within {
+    border: thin solid #8E27EA;
+}
+
+.box {
+    display: block;
+    color: grey;
+    position: relative;
+    padding-left: 35px;
+    cursor: pointer;
+    font-size: 15px;
+  }
+
+  input[type=checkbox] {
+    visibility: hidden;
+  }
+
+  .mark {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 20px;
+    width: 20px;
+    border-radius: 3px;
+    background-color: #EFEFEF;
+  }
+
+  .box:hover input + .mark {
+    background-image: linear-gradient(#8E27EA, #8253DF)
+  }
+
+  .box input:active + .mark {
+    background-color: #999999;
+  }
+
+  .box input:checked + .mark {
+    background-image: linear-gradient(#8E27EA, #8253DF)
+  }
+
+  .mark:after {
+    content: "";
+    position: absolute;
+    display: none;
+  }
+
+  .box input:checked + .mark:after {
+    display: block;
+  }
+
+  .box .mark:after {
+    left: 8px;
+    bottom: 5px;
+    width: 6px;
+    height: 12px;
+    border: solid #eee;
+    border-width: 0 4px 4px 0;
+    -webkit-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    transform: rotate(45deg);
+  }
