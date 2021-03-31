@@ -4,7 +4,7 @@ import BadgeList from '../Components/BadgeList'
 import CustomButton from '../Components/CustomButton'
 import ProgressBar from '../Components/ProgressBar'
 import ResultComponent from '../Components/ResultComponent'
-import './Form.css'
+import './styles/Form.css'
 
 function Form() {
     
@@ -44,6 +44,7 @@ function Form() {
     const [progessValue, setProgessValue] = useState(1)
     const [formCurrentValue, setFormCurrentValue] = useState([])
     const [questionnaire, setQuestionnaire] = useState([])
+
     useEffect(() => {
         getData()    
     }, [])
@@ -69,13 +70,11 @@ function Form() {
     function nextButtonHandler() {
         if (formIndex === 1 && formCurrentValue && formCurrentValue.length >= 3 ) {
             localStorage.setItem(formIndex, JSON.stringify(formCurrentValue));
-            console.log("formCurrentValue",formCurrentValue)
             setQuestionnaire([...questionnaire, ...formCurrentValue])
             setFormIndex(formIndex + 2)
             setFormCurrentValue([])
             setProgessValue(progessValue+1)
         } else if (formIndex > 2 && formCurrentValue.length != 0) {
-            console.log("formCurrentValue",formCurrentValue)
             setQuestionnaire([...questionnaire,...formCurrentValue])
             localStorage.setItem(formIndex, JSON.stringify(formCurrentValue));
             setFormIndex(formIndex + 1)
@@ -83,24 +82,46 @@ function Form() {
             setProgessValue(progessValue+1)
         }
     }
+
     function backButtonHandler() {
         if(formIndex === 3){
+            let removelastelement = questionnaire.slice(0, questionnaire.length - 3)
+            setQuestionnaire(removelastelement)
             setFormIndex(1)
             setProgessValue(progessValue-1)
         } else {
+            let removelastelement = questionnaire.slice(0, questionnaire.length - 1)
+            setQuestionnaire(removelastelement)
             setFormIndex(formIndex - 1)
             setProgessValue(progessValue-1)
         }
         setFormCurrentValue([])
     }
 
+    function questionnaireEditHandler(index){
+        setFormIndex(index)
+        if (index < 3) {
+            setProgessValue(1)
+        } else {
+            setProgessValue(index - 1)
+        }
+    }
+
     function badgeOnClickHandler(badgeValue, title) {
         if(formIndex === 1){
+            
+            formCurrentValue.forEach((item,index) => {
+                if(item.title === title) {
+                    formCurrentValue.splice(index,1)
+                }     
+            })
+
             setFormCurrentValue([{title,badgeValue}, ...formCurrentValue])
         } else {
             setFormCurrentValue([{title,badgeValue}])
         }
     }
+
     return(
         <Container fluid className="form-container" style={{padding: 30}}>
             <Row style={{marginTop: 10, marginBottom: 30,}}>
@@ -111,7 +132,7 @@ function Form() {
                     />
                 </Col>
             </Row>
-                { formIndex === 1 ?
+                { formIndex < 3  ?
                     formContent.map((item,index) => {
                         if(index < 3) {
                             return(
@@ -139,13 +160,14 @@ function Form() {
                         <ResultComponent
                             BasicInfo={BasicInfo}
                             Questionnaire={questionnaire}
+                            questionnaireEditHandler={(index)=>questionnaireEditHandler(index)}
+                            // basicInfoEditHandler={}
                         />
                     </Col>
                 }
-            {console.log("object",questionnaire)}
             <Row xl='6' style={{marginTop: 30}}>
                 <CustomButton color='outline' onClick={() => backButtonHandler() }>Back</CustomButton>
-                <CustomButton onClick={() => nextButtonHandler() }>{formIndex >= 8 ? 'Compelete' :'Next'}</CustomButton>
+                <CustomButton onClick={() => nextButtonHandler() }>{formIndex >= 9 ? 'Compelete' :'Next'}</CustomButton>
             </Row>
         </Container >
 
