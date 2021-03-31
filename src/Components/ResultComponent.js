@@ -9,7 +9,7 @@ function ResultComponent(props){
                 <Col>
                     <Row style={{ paddingLeft: 10}}>
                         <label style={{color: "#8253DF", marginRight: 5}}>Basic Information</label>
-                        <label>🖊</label>
+                        {/* <div onClick={()=>props.basicInfoEditHandler()}>🖊</div> */}
                     </Row>
                     <Row style={{padding: 20}}>
                         {
@@ -29,12 +29,12 @@ function ResultComponent(props){
                   <Col>
                         <Row><label style={{color: "#8253DF", marginRight: 5}}>Questionnaire</label></Row>
                         {
-                            props.Questionnaire.map(item => {
+                            props.Questionnaire.map((item, index) => {
                                 return(
                                     <Row style={{flexDirection:'column', marginTop: 10}}>
                                         <div>
                                             <label>{item.title}</label>
-                                            <label>🖊</label>
+                                            <label className='edit-icon' style={{marginLeft: 5}} onClick={()=>props.questionnaireEditHandler(index)}>🖊</label>
                                         </div>
                                         <Col xs='12' md='4' xl='3'>
                                             <div 
