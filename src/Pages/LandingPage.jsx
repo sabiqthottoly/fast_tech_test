@@ -80,10 +80,10 @@ function LandingPage() {
                     <h3 className='cover-words'>
                         "Coming to Dubai with One Step Dubai has been the best decision of my life. I am now living in Dubai with a good job and I will be getting married next year!"
                     </h3>
-                    <h3 className='cover-words' style={{ bottom: '10%', marginBottom: 15 }}>
+                    <h3 className='cover-words' style={{ bottom: '14%', marginBottom: 15 }}>
                         Mohammed, One Step Dubai student
                     </h3>
-                    <h3 className='cover-words' style={{ bottom: '8%' }}>
+                    <h3 className='cover-words' style={{ bottom: '12%' }}>
                         Pakistan
                     </h3>
                 </Col>
@@ -95,7 +95,7 @@ function LandingPage() {
                     </Row>
                    
                     <Row style={{ justifyContent: 'center' }}>
-                        <form>
+                        <form onSubmit={() => handleFormSubmit()}>
                            
                             <Row>
                                 <Col>
