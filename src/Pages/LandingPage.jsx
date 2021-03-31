@@ -28,6 +28,7 @@ function LandingPage() {
         getData()
     }, [])
 
+    //function to fetch country list and nationality list from data.json
     const getData = () => {
         fetch('data.json'
             , {
@@ -46,8 +47,9 @@ function LandingPage() {
             });
     }
 
+    //function to validate the fields , store data in localStorage and go to next page
     function handleFormSubmit() {
-        if (!firstname || !lastname || !dateofbirth || !gender || !nationality || !residence || !contactNumber || !email) {
+        if (!firstname || !lastname || !dateofbirth || !gender || !nationality || !residence || (!contactNumber && contactNumber.length < 10) || !email) {
             setShowDataEmptyAlert(true)
         } else {
             localStorage.setItem('firstname', firstname);
@@ -105,7 +107,6 @@ function LandingPage() {
                                             onChange={e => setFirstName(e.target.value)}
                                             type='text'
                                             placeholder="First name" />
-
                                     </div>
                                 </Col>
                                 <Col>
