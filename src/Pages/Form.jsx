@@ -1,44 +1,15 @@
 import React,{useEffect,useState} from 'react'
-import { Row, Col, Container, Button } from 'reactstrap'
+import { Row, Col, Container } from 'reactstrap'
 import BadgeList from '../Components/BadgeList'
+import { useLocation } from "react-router-dom";
 import CustomButton from '../Components/CustomButton'
 import ProgressBar from '../Components/ProgressBar'
 import ResultComponent from '../Components/ResultComponent'
 import './styles/Form.css'
 
-//basicInfo data to show in the result page
-let BasicInfo = [
-    {
-        label : 'Name',
-        value : `${localStorage.getItem("firstname")} ${localStorage.getItem("lastname")}`
-    },
-    {
-        label : 'Date of birth',
-        value : localStorage.getItem("dateofbirth"),
-    },
-    {
-        label : 'Gender',
-        value : localStorage.getItem("gender"),
-    },
-    {
-        label : 'Nationality',
-        value : localStorage.getItem("nationality"),
-    },
-    {
-        label : 'Residence',
-        value : localStorage.getItem("residence"),
-    },
-    {
-        label : 'Contact Number',
-        value : localStorage.getItem("contactNumber"),
-    },
-    {
-        label : 'Email',
-        value : localStorage.getItem("email"),
-    },
-]
 
-function Form() {
+function Form(props) {
+
     //States
     const [formContent, setFormContent] = useState([])
     const [formIndex, setFormIndex] = useState(1)
@@ -46,7 +17,8 @@ function Form() {
     const [formCurrentValue, setFormCurrentValue] = useState([])
     const [questionnaire, setQuestionnaire] = useState([])
     const [editMode, setEditMode] = useState(false)
-
+    const location = useLocation();
+    const basicInfo = location.state;
     
     useEffect(() => {
         getData()    
@@ -199,7 +171,7 @@ function Form() {
                     :
                     <Col>
                         <ResultComponent
-                            BasicInfo={BasicInfo}
+                            BasicInfo={basicInfo}
                             Questionnaire={questionnaire}
                             questionnaireEditHandler={(index)=>questionnaireEditHandler(index)}
                         />

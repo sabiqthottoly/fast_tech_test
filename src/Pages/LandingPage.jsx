@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { useHistory, Prompt } from "react-router-dom";
-import { Button, Container, Row, Col, Input, Form, FormGroup, Label, Alert } from 'reactstrap'
+import { Button, Container, Row, Col, Alert } from 'reactstrap'
 import './styles/LandingPage.css'
 import Calendar from 'react-calendar';
 import 'react-calendar/dist/Calendar.css';
@@ -11,6 +11,7 @@ function LandingPage() {
     let history = useHistory();
 
     //states
+    let BasicInfo = []
     const [showCalendar, setShowCalendar] = useState(false);
     const [showDataEmptyAlert, setShowDataEmptyAlert] = useState(false);
     const [firstname, setFirstName] = useState('')
@@ -60,8 +61,41 @@ function LandingPage() {
             localStorage.setItem('residence', residence);
             localStorage.setItem('contactNumber', contactNumber);
             localStorage.setItem('email', email);
-            history.push("/form");
+
+            BasicInfo = [
+                {
+                    label : 'Name',
+                    value : `${firstname} ${lastname}`
+                },
+                {
+                    label : 'Date of birth',
+                    value : dateofbirth,
+                },
+                {
+                    label : 'Gender',
+                    value : gender,
+                },
+                {
+                    label : 'Nationality',
+                    value : nationality,
+                },
+                {
+                    label : 'Residence',
+                    value : residence,
+                },
+                {
+                    label : 'Contact Number',
+                    value : contactNumber,
+                },
+                {
+                    label : 'Email',
+                    value : email,
+                },
+            ]
         }
+
+        history.push({ pathname : "/form", state: BasicInfo  });
+
     };
 
     return (
@@ -101,7 +135,7 @@ function LandingPage() {
                                 <Col>
                                     <div className='text-box'>
                                         <input
-                                            style={{ fontSize: 21 }}
+                                            style={{ fontSize: 21,color:'grey' }}
                                             className='text-input'
                                             value={firstname}
                                             onChange={e => setFirstName(e.target.value)}
@@ -112,7 +146,7 @@ function LandingPage() {
                                 <Col>
                                     <div className='text-box'>
                                         <input
-                                            style={{ fontSize: 21 }}
+                                            style={{ fontSize: 21,color: 'grey' }}
                                             className='text-input'
                                             type='text'
                                             value={lastname}
@@ -236,7 +270,7 @@ function LandingPage() {
                                 <Col>
                                     <div className='text-box'>
                                         <input
-                                            style={{ fontSize: 21 }}
+                                            style={{ fontSize: 21, color: 'grey' }}
                                             className='text-input'
                                             type='number'
                                             value={contactNumber}
@@ -248,7 +282,7 @@ function LandingPage() {
                                 <Col>
                                     <div className='text-box'>
                                         <input
-                                            style={{ fontSize: 21 }}
+                                            style={{ fontSize: 21, color: "grey" }}
                                             className='text-input'
                                             type='email'
                                             value={email}
