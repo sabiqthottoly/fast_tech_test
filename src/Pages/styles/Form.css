@@ -63,12 +63,16 @@
 }
  
 
- .btn-grad:hover {
-   background-position: right center; 
-   color: #fff;
-   text-decoration: none;
- }
-         
- .bar-inner{
-  background-image: linear-gradient(to right, #8E27EA 0% 51%, #8253DF  100%)
+.btn-grad:hover {
+  background-position: right center; 
+  color: #fff;
+  text-decoration: none;
+}
+        
+.bar-inner{
+ background-image: linear-gradient(to right, #8E27EA 0% 51%, #8253DF  100%)
+}
+
+.edit-icon{
+  cursor: pointer;
 }
