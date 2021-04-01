@@ -133,26 +133,29 @@ function LandingPage() {
                            
                             <Row>
                                 <Col>
-                                    <div className='text-box'>
+                                   <div className='text-box'>
                                         <input
-                                            style={{ fontSize: 21,color:'grey' }}
+                                            style={{ fontSize: 21,color: 'black' }}
                                             className='text-input'
+                                            type='text'
                                             value={firstname}
                                             onChange={e => setFirstName(e.target.value)}
-                                            type='text'
-                                            placeholder="First name" />
-                                    </div>
+                                            placeholder="First name"
+                                        />
+                                        <label for="input" className="control-label">First name</label>
+                                 </div>
                                 </Col>
                                 <Col>
                                     <div className='text-box'>
                                         <input
-                                            style={{ fontSize: 21,color: 'grey' }}
+                                            style={{ fontSize: 21,color: 'black' }}
                                             className='text-input'
                                             type='text'
                                             value={lastname}
                                             onChange={e => setLastName(e.target.value)}
                                             placeholder="Last name"
                                         />
+                                      <label for="input" className="control-label">Last name</label>
                                     </div>
                                 </Col>
                             </Row>
@@ -163,12 +166,13 @@ function LandingPage() {
                                         <input
                                             readOnly
                                             value={dateofbirth}
-                                            style={{ fontSize: 16, color: 'grey', width: '70%' }}
+                                            style={{ fontSize: 16, color: dateofbirth ? 'black' : 'grey', width: '70%' }}
                                             className='text-input'
                                             type='text'
                                             placeholder="Date of birth"
                                         />
-                                        <img src={'./images/calender.png'} style={{ height: 20 }} />
+                                        <label for="input" className="control-label">Date of birth</label>
+                                        <img src={'./images/calender.png'} style={{ height: 20, position:'absolute', right: 30 }} />
                                     </div>
                                     <div className='calendar'>
                                         {showCalendar &&
@@ -231,7 +235,7 @@ function LandingPage() {
                                             style={{
                                                 width: '80%',
                                                 fontSize: 17,
-                                                color: 'grey'
+                                                color: nationality ? 'black' :'grey'
                                             }}
                                             onChange={e => setNationality(e.target.value)}
                                         >
@@ -241,6 +245,7 @@ function LandingPage() {
                                                 )
                                             })}
                                         </select>
+                                        {nationality && <label for="input" className="control-label">Nationality</label>}
                                     </div>
                                 </Col>
                                 <Col xs='12' xl='6' md='6'>
@@ -250,7 +255,7 @@ function LandingPage() {
                                             style={{
                                                 width: '80%',
                                                 fontSize: 17,
-                                                color: 'grey'
+                                                color: residence ? 'black' :'grey'
                                             }}
                                             onChange={e => setResidence(e.target.value)}
                                         >
@@ -260,6 +265,7 @@ function LandingPage() {
                                                 )
                                             })}
                                         </select>
+                                        { residence && <label for="input" className="control-label">Country of residence</label>}
                                     </div>
                                 </Col>
                             </Row>
@@ -269,25 +275,27 @@ function LandingPage() {
                                 <Col>
                                     <div className='text-box'>
                                         <input
-                                            style={{ fontSize: 21, color: 'grey' }}
+                                            style={{ fontSize: 21, color: 'black' }}
                                             className='text-input'
                                             type='number'
                                             value={contactNumber}
                                             onChange={e => setContactNumber(e.target.value)}
                                             placeholder="Contact number"
                                         />
+                                        <label for="input" className="control-label">Contact number</label>
                                     </div>
                                 </Col>
                                 <Col>
                                     <div className='text-box'>
                                         <input
-                                            style={{ fontSize: 21, color: "grey" }}
+                                            style={{ fontSize: 21, color: "black" }}
                                             className='text-input'
                                             type='email'
                                             value={email}
                                             onChange={e => setEmail(e.target.value)}
                                             placeholder="Email address"
                                         />
+                                        <label for="input" className="control-label">Email address</label>
                                     </div>
                                 </Col>
                             </Row>

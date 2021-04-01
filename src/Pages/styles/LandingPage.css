@@ -68,9 +68,11 @@
     align-content: center;
     align-items: center;
     border-radius: 5px;
-    padding-top: 15px;
-    padding-bottom: 15px;
-    justify-content: center;
+    padding-top: 10px;
+    padding-bottom: 5px;
+    padding-left: 10px;
+    padding-right: 10px;
+    justify-content: flex-start;
 }
 
 .text-box:focus-within {
@@ -138,4 +140,29 @@ form {
   display: block;
   padding-left: 2rem;
   padding-right: 2rem;
+}
+
+.control-label {
+  display: block;
+  position: absolute;
+  opacity: 0;
+  bottom: 1.9rem;
+  color: #8E27EA;
+  transition: 0.2s ease-in-out transform;
+  font-size: 12px;
+}
+
+.text-input:placeholder-shown + .control-label {
+  visibility: hidden;
+  z-index: -1;
+  transition: 0.2s ease-in-out;
+}
+
+.text-input:not(:placeholder-shown) + .control-label,
+.text-input:focus:not(:placeholder-shown) + .control-label {
+  visibility: visible;
+  z-index: 1;
+  opacity: 1;
+  transform: translateY(-5px);
+  transition: 0.2s ease-in-out transform;
 }
