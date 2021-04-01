@@ -133,3 +133,9 @@
     -ms-transform: rotate(45deg);
     transform: rotate(45deg);
   }
+
+form {
+  display: block;
+  padding-left: 2rem;
+  padding-right: 2rem;
+}

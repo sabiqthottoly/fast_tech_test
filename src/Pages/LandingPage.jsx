@@ -180,7 +180,7 @@ function LandingPage() {
                                             />}
                                     </div>
                                 </Col>
-                                <Col>
+                                <Col xs='12' xl='6' md='6'>
                                     <div>
                                         <label style={{ color: 'grey', fontSize: 16, display: 'flex', alignSelf: 'flex-end', marginTop: 7 }}>Gender</label>
                                         <div style={{ display: 'flex', justifyContent: 'flex-start' }}>
@@ -224,7 +224,7 @@ function LandingPage() {
                             </Row>
                            
                             <Row>
-                                <Col>
+                                <Col xs='12' xl='6' md='6'>
                                     <div className='text-box'>
                                         <select
                                             className='text-input'
@@ -243,7 +243,7 @@ function LandingPage() {
                                         </select>
                                     </div>
                                 </Col>
-                                <Col>
+                                <Col xs='12' xl='6' md='6'>
                                     <div className='text-box'>
                                         <select
                                             className='text-input'
@@ -302,14 +302,14 @@ function LandingPage() {
                                 </Col>
                             </Row>
                        
-                        </form>
-                    </Row>
-                    
                     <Row>
                         <div style={{ display: 'flex', justifyContent: 'flex-end', width: '100%', marginLeft: 20 }}>
                             <CustomButton onClick={() => handleFormSubmit()}>Apply now</CustomButton>
                         </div>
                     </Row>
+                        </form>
+                    </Row>
+                    
               
                 </Col>
             </Row>
