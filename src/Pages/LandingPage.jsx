@@ -233,7 +233,7 @@ function LandingPage() {
                                         <select
                                             className='text-input'
                                             style={{
-                                                width: '80%',
+                                                width: '100%',
                                                 fontSize: 17,
                                                 color: nationality ? 'black' :'grey'
                                             }}
@@ -253,7 +253,7 @@ function LandingPage() {
                                         <select
                                             className='text-input'
                                             style={{
-                                                width: '80%',
+                                                width: '100%',
                                                 fontSize: 17,
                                                 color: residence ? 'black' :'grey'
                                             }}
