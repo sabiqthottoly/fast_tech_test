@@ -50,7 +50,7 @@ function LandingPage() {
 
     //function to validate the fields , store data in localStorage and go to next page
     function handleFormSubmit() {
-        if (!firstname || !lastname || !dateofbirth || !gender || !nationality || nationality === 'nationality' || !residence || residence === 'Country of residence' || !contactNumber && contactNumber.length < 10 || !email) {
+        if (!firstname || !lastname || !dateofbirth || !gender || !nationality || nationality === 'nationality' || !residence || residence === 'Country of residence' ||  contactNumber.length < 10 || !email) {
             setShowDataEmptyAlert(true)
         } else {
             localStorage.setItem('firstname', firstname);
@@ -170,14 +170,13 @@ function LandingPage() {
                                         />
                                         <img src={'./images/calender.png'} style={{ height: 20 }} />
                                     </div>
-                                    <div style={{ position: 'relative' }}>
+                                    <div className='calendar'>
                                         {showCalendar &&
                                             <Calendar
                                                 onChange={(e) => {
                                                     setDateOfBirth(e.toLocaleDateString())
-                                                    setShowCalendar(false)
+                                                    setShowCalendar(!showCalendar)
                                                 }}
-                                                value={dateofbirth}
                                             />}
                                     </div>
                                 </Col>

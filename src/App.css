@@ -5,6 +5,12 @@
   display: flex;
 }
 
+.calendar{
+  position: absolute;
+  display: block;
+  z-index: 1;
+}
+
 .form-background{
   background-size: cover;
   height: 100vh;
