@@ -9,6 +9,13 @@
   padding-right: 20px;
   margin: 5px;
   cursor: pointer;
+  background-color: #EFEFEF;
+  transition: transform .2s
+}
+
+.badge-style:hover {
+  transform: scale(1.05);
+  background-color: #dfdfdf;
 }
 
 .grad-badge{
@@ -70,7 +77,9 @@
 }
         
 .bar-inner{
- background-image: linear-gradient(to right, #8E27EA 0% 51%, #8253DF  100%)
+ background-image: linear-gradient(to right, #8E27EA 0% 51%, #8253DF  100%);
+  transition: 1s ease;
+  transition-delay: 0.2s;
 }
 
 .edit-icon{
